@@ -15,7 +15,7 @@
 
 /**
  * Tips:  decodeURI(url)能将url中的编码字符串解码
- *            split()
+ *        split()
  */
 
 var url = 'http://www.domain.com/?user=anonymous&id=123&id=456&id=789&city=%E5%8C%97%E4%BA%AC&d&enabled=false';

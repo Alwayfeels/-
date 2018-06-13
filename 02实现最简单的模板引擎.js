@@ -11,24 +11,41 @@
 
 /**
  * Tips: replace()
+ *       正则表达式
  */
 
-render('我是{{name}}，年龄{{age}}，性别{{sex}}',{
-    name:'姓名',
+var show = render('我是{{name}},再强调一遍我是{{name}}，年龄{{age}}，性别{{sex}}',{
+    name:'王师傅',
     age:18
 })
+console.log(show)
+/**
+ * 我的答案
+ */
 
-function render(template, data) {
-    const name = data.name
-    const age = data.age
-    const sex = data.sex
+// function render(template, data) {
+//     const name = data.name
+//     const age = data.age
+//     const sex = data.sex
+//
+//     template = template
+//         .replace(/{{name}}/g, name)
+//         .replace(/{{age}}/g, age)
+//         .replace(/{{sex}}/g, sex)
+//
+//     console.log(template)
+//     return template
+// }
 
-    template = template
-        .replace(/{{name}}/, name)
-        .replace(/{{age}}/, age)
-        .replace(/{{sex}}/, sex)
-
-    console.log(template)
-    return template
+/**
+ * 参考答案:
+ * 优点：没有写死，同时修改data和模板仍然可以工作
+ */
+function render(tpl, data) {
+    return tpl.replace(/\{\{(.+?)\}\}/g, function (m, m1) {
+        // m为正则匹配的值，m1为第一个括号中匹配的值
+        return data[m1]
+    })
 }
+
 
